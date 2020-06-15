@@ -1,0 +1,100 @@
+$mainBlue: #3268be;
+$darkerBlue: #275091;
+$lighterBlue: #4178cf;
+$complimentary: #fd9c47;
+$complimentary-light: #ffb06b;
+$white: #ffffff;
+$headerHeight: 8rem;
+$imgPadding: 1rem;
+$maxWidth: 1400px;
+$callUsHeight: 2rem;
+$cleaningImage: url('../images/family-room-670281.jpg');
+
+body {
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 28;
+}
+
+// Hider
+.poof {
+    display: none;
+}
+
+#callUs {
+    z-index: 10;
+    background-color: $mainBlue;
+    height: $callUsHeight;
+    line-height: $callUsHeight;
+    text-align: center;
+    color: $white;
+    font-size: 0.9rem;
+}
+
+#wrap-header {
+    z-index: 10;
+    width: 100%;
+    height: $headerHeight;
+    background-color: $white;
+    box-shadow: 3px 1px 5px rgba(0,0,0,.4);
+    position: relative;
+    header {
+        height: $headerHeight;
+        margin: 0 auto;
+        max-width: $maxWidth;
+        width: 100%;
+        img {
+            padding: $imgPadding;
+            height: $headerHeight - ($imgPadding * 2);
+            float: left;
+        }
+    }
+}
+#wrap-hero {
+    margin: 0 auto;
+    //max-width: $maxWidth;
+    width: 100%;
+    height: max-content;
+    background-color: transparent;
+    section {
+        // Pretty chair carpet background
+        background-position: center;
+        background-image: $cleaningImage;
+        background-size: cover;
+        opacity: 0.9;
+        // Enable flex
+        display: flex;
+        // Causes it to fit in the center
+        justify-content: center;
+        position: relative;
+        // The white square
+        div.whitebg {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.9);
+            align-items: center;
+            margin: 3rem 0;
+            width: 80%;
+            // Keeps width constant despite padding
+            box-sizing: border-box;
+            padding: 1rem;
+            h2 {
+                color: $darkerBlue;
+                text-align: center;
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            p {
+                padding: 0 2rem;
+                text-align: center;
+            }
+        }
+    }
+}
+
+// Desktop mode
+@media only screen and (min-width: 600px) {
+    #callUs {
+        font-size: 1.0rem;
+    }
+}
