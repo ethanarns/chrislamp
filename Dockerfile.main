@@ -13,23 +13,17 @@ RUN apt-get install -y \
     php-common \
     php-mbstring \
     composer
-#RUN tasksel install lamp-server -v
 # COPY ./php.ini /etc/php/7.2/apache2/php.ini
-# RUN ls /etc/apache2/sites-enabled/
-# RUN ls /etc/apache2/sites-available/
-# RUN echo "Deleting hosts"
 RUN rm -rfv /etc/apache2/sites-enabled/*.conf
 RUN rm -rfv /etc/apache2/sites-available/*.conf
-# RUN echo "Listing new hosts"
-# RUN ls /etc/apache2/sites-enabled/
-# RUN ls /etc/apache2/sites-available/
+RUN rm -rfv /var/www/html/
 COPY ./vhosts.conf /etc/apache2/sites-available/vhost.conf
-#RUN a2ensite vhost
+COPY html/ /var/www/html
 # COPY ./apache2.conf /etc/apache2/apache2.conf
 RUN ln -s /etc/apache2/sites-available/vhost.conf /etc/apache2/sites-enabled/vhost.conf
 
 CMD ["apachectl","-D","FOREGROUND"]
-#RUN a2enmod rewrite
-#RUN service apache2 restart
+RUN a2enmod rewrite
+RUN service apache2 restart
 EXPOSE 80
 EXPOSE 443
